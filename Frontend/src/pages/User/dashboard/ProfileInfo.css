@@ -1,0 +1,130 @@
+.profile-container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.input-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-icon .icon {
+  margin-right: 8px; /* Moves icon slightly left of input */
+  font-size: 16px;
+  color: #003366;
+  min-width: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+input, select, textarea {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  min-height: 45px;
+}
+
+input:disabled, textarea:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  background: #003366;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+.error-text {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Checkbox container styling */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+  transform: scale(1);
+  accent-color: #003366;
+  margin: 0;
+}
+
+.checkbox-container label {
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+   
+}
+/* Table view for non-edit mode */
+.profile-view table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-view td {
+  padding: 8px;
+  vertical-align: top;
+}
+
+.profile-view .profile-label {
+  font-weight: 600;
+  color: #003366;
+  width: 200px;
+}

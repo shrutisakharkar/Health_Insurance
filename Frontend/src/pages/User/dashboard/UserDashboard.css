@@ -1,0 +1,102 @@
+/* MAIN CONTAINER */
+.user-dashboard-container {
+  display: flex;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR — ALWAYS FIXED */
+.user-dashboard-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 200;
+}
+
+/* MAIN CONTENT WRAPPER */
+.user-dashboard-main {
+  margin-left: 220px; /* equal to sidebar width */
+  width: calc(100% - 220px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* HEADER — FIXED INSIDE MAIN CONTENT */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color:#afc6ea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+  z-index: 50;
+}
+
+/* HEADER TITLE */
+.dashboard-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: #091b2f;
+  margin: 0;
+}
+
+/* PROFILE ICON FIXED TO RIGHT */
+.profile-icon-container {
+  margin-left: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  font-size: 1.9rem;
+  color: #004aad;
+  cursor: pointer;
+}
+
+/* DROPDOWN MENU */
+.profile-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  width: 200px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  padding: 10px;
+  z-index: 300;
+}
+
+/* CONTENT AREA */
+.user-dashboard-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  background: #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .user-dashboard-sidebar {
+    width: 180px;
+  }
+
+  .user-dashboard-main {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+  }
+}
+

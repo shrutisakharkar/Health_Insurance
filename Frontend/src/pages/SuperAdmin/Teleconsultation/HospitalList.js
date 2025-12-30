@@ -1,0 +1,302 @@
+import React, { useEffect, useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Typography,
+  IconButton,
+  Alert,
+} from "@mui/material";
+
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+
+import CONFIG from "../../../config/config"; 
+
+export default function HospitalList() {
+  const [hospitals, setHospitals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
+  const [formData, setFormData] = useState({
+    hospitalName: "",
+    city: "",
+    speciality: "",
+    contactNumber: "",
+  });
+  const [msg, setMsg] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const token = localStorage.getItem("token");
+  
+  const API_BASE = CONFIG.BASE_URL;
+
+
+  const showMsg = (message) => {
+    setMsg(message);
+    setTimeout(() => setMsg(""), 3000);
+  };
+
+  const getHospitals = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/hospitals/all`, {  
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const data = await res.json();
+      setHospitals(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error("Error fetching hospitals:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getHospitals();
+  }, []);
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+
+    if (/[^A-Za-z0-9\s]/.test(value)) return;
+
+    if (["hospitalName", "city", "speciality"].includes(name)) {
+      if (/\d/.test(value)) return;
+    }
+
+    if (name === "contactNumber") {
+      value = value.replace(/\D/g, "");
+      if (value.length > 10) return;
+    }
+
+    const newForm = { ...formData, [name]: value };
+    setFormData(newForm);
+
+    const phoneRegex = /^[0-9]{10}$/;
+    const valid =
+      newForm.hospitalName.trim() &&
+      newForm.city.trim() &&
+      newForm.speciality.trim() &&
+      phoneRegex.test(newForm.contactNumber);
+
+    setIsFormValid(valid);
+  };
+
+  const handleAdd = () => {
+    setEditMode(false);
+    setFormData({ hospitalName: "", city: "", speciality: "", contactNumber: "" });
+    setIsFormValid(false);
+    setOpen(true);
+  };
+
+  const handleEdit = (hospital) => {
+    const contactNum = hospital.contactNumber.replace("+91", "");
+    setEditMode(true);
+    setSelectedId(hospital.id);
+    setFormData({
+      hospitalName: hospital.hospitalName,
+      city: hospital.city,
+      speciality: hospital.speciality,
+      contactNumber: contactNum,
+    });
+
+    setOpen(true);
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this hospital?")) return;
+
+    try {
+      const response = await fetch(`${API_BASE}/hospitals/delete/${id}`, { 
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) {
+        alert("❌ Failed to delete hospital.");
+        return;
+      }
+
+      showMsg("✅ Hospital deleted successfully");
+      setHospitals((prev) => prev.filter((h) => h.id !== id));
+    } catch (err) {
+      alert("❌ Failed to delete hospital.");
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const hospitalPayload = {
+        ...formData,
+        contactNumber: "+91" + formData.contactNumber,
+      };
+
+      if (editMode) {
+        await fetch(`${API_BASE}/hospitals/update/${selectedId}`, { 
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(hospitalPayload),
+        });
+        showMsg("✅ Hospital updated successfully");
+      } else {
+        await fetch(`${API_BASE}/hospitals/add`, { 
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(hospitalPayload),
+        });
+        showMsg("✅ Hospital added successfully");
+      }
+
+      setOpen(false);
+      getHospitals();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  if (loading) return <p style={{ textAlign: "center" }}>Loading…</p>;
+
+  return (
+    <div style={{ padding: "20px" }}>
+      <Typography variant="h5" sx={{ fontWeight: "bold", mb: 2 }}>
+        🏥 Hospital List
+      </Typography>
+
+      {msg && <Alert severity="success" sx={{ mb: 2 }}>{msg}</Alert>}
+
+      <Button
+        variant="contained"
+        startIcon={<AddIcon />}
+        onClick={handleAdd}
+        sx={{ mb: 2 }}
+      >
+        Add Hospital
+      </Button>
+
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow sx={{ background: "#1e40af" }}>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Sr. No.</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Hospital Name</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>City</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Speciality</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Contact Number</TableCell>
+              <TableCell sx={{ color: "white", fontWeight: "bold" }}>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {hospitals.length > 0 ? (
+  hospitals.map((hosp, index) => (
+    <TableRow key={hosp.id} hover>
+      <TableCell>{index + 1}</TableCell>
+                  <TableCell>{hosp.hospitalName}</TableCell>
+                  <TableCell>{hosp.city}</TableCell>
+                  <TableCell>{hosp.speciality}</TableCell>
+                  <TableCell>{hosp.contactNumber}</TableCell>
+
+                  <TableCell>
+                    <IconButton color="primary" onClick={() => handleEdit(hosp)}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton color="error" onClick={() => handleDelete(hosp.id)}>
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={6} align="center">
+                  No hospitals found.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
+      {/* ⬇️ Blur Background Added Here */}
+      <Dialog
+        open={open}
+        onClose={() => setOpen(false)}
+        BackdropProps={{
+          sx: {
+            backgroundColor: "rgba(0,0,0,0.4)",
+            backdropFilter: "blur(6px)",
+          },
+        }}
+      >
+        <DialogTitle>{editMode ? "Edit Hospital" : "Add New Hospital"}</DialogTitle>
+
+        <DialogContent>
+          <TextField
+            label="Hospital Name"
+            name="hospitalName"
+            value={formData.hospitalName}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="City"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Speciality"
+            name="speciality"
+            value={formData.speciality}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+          />
+          <TextField
+            label="Contact Number"
+            name="contactNumber"
+            value={formData.contactNumber}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            inputProps={{ maxLength: 10 }}
+            helperText="Enter 10-digit mobile number"
+            InputProps={{
+              startAdornment: (
+                <span style={{ marginRight: "6px", fontWeight: "bold" }}>
+                  +91
+                </span>
+              ),
+            }}
+          />
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={handleSubmit}
+            disabled={!isFormValid}
+          >
+            {editMode ? "Update" : "Submit"}
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}

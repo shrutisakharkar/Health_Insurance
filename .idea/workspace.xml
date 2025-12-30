@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CrudOperation:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="845bf92b-1c85-440b-bed8-5bacfa7b65cd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/entity/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/AppointmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/PolicyPlanImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/PolicyPlanImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/UserProfileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/serviceimpl/UserProfileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/entity/UserProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/AppointmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/AppointmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/PolicyPlanImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/PolicyPlanImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/UserProfileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/HealthInsurance/target/classes/com/crud/serviceimpl/UserProfileServiceImpl.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;samiksha9911&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Suyog-Ghadage/InsuranceProject.git&quot;,
+    &quot;accountId&quot;: &quot;91a15874-4c43-444f-a5e8-c80298ccb31e&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="33Pwof2MDCHHWJztGAwXjozpNYH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Application.CrudOperationApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.CrudOperation [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.CrudOperation [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BackEnd&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/suyogghadage/Desktop/12&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  }
+}</component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="845bf92b-1c85-440b-bed8-5bacfa7b65cd" name="Changes" comment="" />
+      <created>1759232191013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759232191013</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/HealthInsurance/src/main/java/com/crud/controller/FAQController.java</url>
+          <line>24</line>
+          <properties class="com.crud.controller.FAQController" method="updateFAQ">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.springframework.data.mapping.PropertyReferenceException" package="org.springframework.data.mapping" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

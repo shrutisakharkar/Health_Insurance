@@ -1,0 +1,96 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+.action-btn {
+  display: inline-block;
+  margin: 1px;
+  padding: 12px 24px;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.action-btn:hover {
+  background-color: #005fa3;
+}
+
+.user-actions {
+  text-align: center;
+  margin: 40px auto;
+}
+
+
+.preview-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.preview-section:hover {
+  transform: translateY(-3px);
+}
+
+.preview-section h2 {
+  font-size: 1.9rem;
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.preview-section p {
+  color: #333;
+  font-size: 15px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Large preview images */
+.preview-image.large {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Small call-to-action button */
+.btn-small {
+  display: inline-block;
+  padding:1px;
+  background-color: #0078d4;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  text-decoration: none;
+  margin-top: 0;
+  transition: background-color 0.2s ease;
+}
+
+.btn-small:hover {
+  background-color: #005ea8;
+}
+.page-with-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ensures footer stays bottom if content short */
+}
+
+.support-page {
+  flex: 1; /* content takes remaining space */
+  text-align: center;
+  padding: 40px 20px;
+}
+
+
+

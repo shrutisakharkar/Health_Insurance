@@ -1,0 +1,57 @@
+.support-page {
+  max-width: 600px;
+  margin: 50px auto; /* center the card */
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.support-page h2 {
+  margin-bottom: 20px;
+}
+
+.support-page p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.divider {
+  margin: 25px 0;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.agent-btn-container {
+  margin-top: 25px;
+}
+
+.register-btn {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-btn:hover {
+  background-color: #0056b3;
+}
+
+.page-with-footer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* ensures footer stays bottom if content short */
+}
+
+.support-page {
+  flex: 1; /* content takes remaining space */
+  text-align: center;
+  padding: 40px 20px;
+}

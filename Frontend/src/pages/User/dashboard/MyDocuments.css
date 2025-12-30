@@ -1,0 +1,99 @@
+.my-documents-container {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 20px auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Heading */
+.my-documents-container h2,
+.my-documents-container h3 {
+  color: #2a4d8f;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* Upload Form */
+.my-documents-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f4f7ff;
+  border: 1px solid #d9e2ff;
+}
+
+.my-documents-container input[type="text"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #a3b6e4;
+  font-size: 15px;
+}
+
+.my-documents-container input[type="file"] {
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #a3b6e4;
+}
+
+.my-documents-container button {
+  background-color: #2a4d8f;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.my-documents-container button:hover {
+  background-color: #1d3a70;
+}
+
+/* Document List */
+.my-documents-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.my-documents-container li {
+  padding: 12px 15px;
+  background: #f9f9ff;
+  margin-bottom: 10px;
+  border-left: 4px solid #2a4d8f;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+.my-documents-container li a {
+  color: #2a4d8f;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.my-documents-container li a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
