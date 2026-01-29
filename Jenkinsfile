@@ -31,8 +31,8 @@ pipeline {
         stage('Deploy (Docker Compose)') {
             steps {
                 dir('.') {
-                    sh 'docker-compose build --no-cache'
-                    sh 'docker-compose up -d'
+                    sh 'docker compose build --no-cache'
+                    sh 'docker compose up -d'
 
                 }
             }
