@@ -12,21 +12,21 @@ pipeline {
 stage("Cloning") { 
             steps {        
                  script{      
-                clone('https://github.com/shrutisakharkar/django-notes-app.git','main') 
+                clone('https://github.com/shrutisakharkar/Health_Insurance.git','main') 
                    } 
             }
         }
         stage('build') {
             steps {
                 script {
-                    docker_build("notes-app", "latest", "shrutisakharkar")
+                   sh  "docker build -t  health-insurance:latest ."
                 }
             }
         }
         stage("push to dockerhub") {
             steps {
                 script {
-                    docker_push("notes-app", "latest", "shrutisakharkar")
+                    docker_push(" health-insurance", "latest", "shrutisakharkar")
                 }
             }
         }
