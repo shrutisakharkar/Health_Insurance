@@ -29,7 +29,7 @@ stage("Cloning") {
         stage('deploying') {
             steps {
                 echo "deploying"
-                sh "docker compose up -d"
+                sh "docker-compose up -d"
             }
         }
     }
