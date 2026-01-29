@@ -25,13 +25,7 @@ stage("Cloning") {
             }
         }
     }
-        stage("push to dockerhub") {
-            steps {
-                script {
-                    docker_push(" health-insurance", "latest", "shrutisakharkar")
-                }
-            }
-        }
+       
         stage('deploying') {
             steps {
                 echo "deploying"
