@@ -19,7 +19,9 @@ stage("Cloning") {
         stage('build') {
             steps {
                 script {
+                   dir ('Frontend'){
                     sh "docker build -t health-insurance:latest ."
+                   }
                 }
             }
         }
