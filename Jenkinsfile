@@ -12,14 +12,14 @@ pipeline {
 stage("Cloning") { 
             steps {        
                  script{      
-                clone('https://github.com/ai-sciencers/Health_Insurance.git','main') 
+                clone('https://github.com/ai-sciencers/health-insurance.git','main') 
                    } 
             }
         }
         stage('build') {
             steps {
                 script {
-                    docker_build("Health_Insurance", "latest", "ai-sciencers")
+                    docker_build("health-insurance", "latest", "ai-sciencers")
                 }
             }
         }
