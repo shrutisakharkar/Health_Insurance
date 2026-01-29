@@ -1,7 +1,9 @@
 @Library("Shared") _
 pipeline {
-   agent { label 'Neha' }
+    agent { label 'Neha' }
+
     stages {
+
         stage("hello") {
             steps {
                 script {
@@ -9,35 +11,28 @@ pipeline {
                 }
             }
         }
-stage("Cloning") { 
-            steps {        
-                 script{      
-                clone('https://github.com/ai-sciencers/Health_Insurance.git','main') 
-                   } 
-            }
-        }
-        stage('build-Frontend') {
+
+        stage("Cloning") {
             steps {
                 script {
-                   dir ('Frontend'){
-                    sh "docker build -t health-insurance:latest ."
-                   }
+                    clone('https://github.com/ai-sciencers/Health_Insurance.git', 'main')
                 }
             }
         }
-       stage('Build Backend') {
-    steps {
-        dir('Backend') {
-            sh 'mvn clean package -DskipTests'
-        }
-    }
-}
 
-        
-        stage('deploying') {
+        stage('Build Backend') {
             steps {
-                echo "deploying"
-                sh "docker-compose up -d"
+                dir('Backend') {
+                    sh 'mvn clean package -DskipTests'
+                }
+            }
+        }
+
+        stage('Deploy (Docker Compose)') {
+            steps {
+                dir('.') {
+                    sh 'docker-compose up -d --build'
+                }
             }
         }
     }
