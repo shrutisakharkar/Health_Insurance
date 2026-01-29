@@ -1,0 +1,71 @@
+pipeline {
+    agent { label 'Neha' }
+
+    environment {
+        DOCKERHUB_CRED = 'dockerhubcred'  // Jenkins credentials ID
+        BACKEND_IMAGE = 'monikabharambe/notes-backend:latest'
+        FRONTEND_IMAGE = 'monikabharambe/notes-frontend:latest'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/admin2705/Health_Insurance.git',
+                    branch: 'main'
+            }
+        }
+
+        stage('Build Backend Docker Image') {
+            steps {
+                dir('Backend') {
+                    sh '''
+                        # Clean previous builds
+                        sudo docker rmi -f $BACKEND_IMAGE || true
+                        # Build backend Docker image (multi-stage)
+                        sudo docker build -t $BACKEND_IMAGE .
+                    '''
+                }
+            }
+        }
+
+        stage('Build Frontend Docker Image') {
+            steps {
+                dir('Frontend') {
+                    sh '''
+                        sudo docker rmi -f $FRONTEND_IMAGE || true
+                        sudo docker build -t $FRONTEND_IMAGE .
+                    '''
+                }
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                echo 'Logging in to DockerHub and pushing images...'
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: "$DOCKERHUB_CRED",
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS'
+                    )
+                ]) {
+                    sh '''
+                        echo $DOCKER_PASS | sudo docker login -u $DOCKER_USER --password-stdin
+                        sudo docker push $BACKEND_IMAGE
+                        sudo docker push $FRONTEND_IMAGE
+                        sudo docker logout
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up dangling images'
+            sh 'sudo docker system prune -f'
+        }
+    }
+}
