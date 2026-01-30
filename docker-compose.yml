@@ -9,12 +9,10 @@ services:
       MYSQL_DATABASE: healthdb
       MYSQL_USER: healthuser
       MYSQL_PASSWORD: healthpass
-    ports:
-      - "3306:3306"
-    networks:
-      - app-network
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
   backend:
     build:
@@ -27,6 +25,10 @@ services:
       - mysql
     networks:
       - app-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/healthdb
+      SPRING_DATASOURCE_USERNAME: healthuser
+      SPRING_DATASOURCE_PASSWORD: healthpass
 
   frontend:
     build:
@@ -46,5 +48,3 @@ networks:
 
 volumes:
   mysql-data:
-
-
