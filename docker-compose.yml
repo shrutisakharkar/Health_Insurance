@@ -11,18 +11,17 @@ services:
       MYSQL_PASSWORD: healthpass
     ports:
       - "3306:3306"
-    networks:
-      - app-network
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - app-network
 
-  backend:
+  springboot-service:
     build:
       context: ./Backend
       dockerfile: Dockerfile
-    container_name: spring-backend
     ports:
-      - "8089:8089"
+      - "8089:8080"  # host:container
     depends_on:
       - mysql
     networks:
@@ -32,11 +31,10 @@ services:
     build:
       context: ./Frontend
       dockerfile: Dockerfile
-    container_name: react-frontend
     ports:
-      - "3000:80"
+      - "3000:80"   # host:container
     depends_on:
-      - backend
+      - springboot-service
     networks:
       - app-network
 
