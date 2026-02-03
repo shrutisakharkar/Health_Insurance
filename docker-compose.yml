@@ -21,7 +21,7 @@ services:
       context: ./Backend
       dockerfile: Dockerfile
     ports:
-      - "8089:8080"  # host:container
+      - "8089:8089"  # host:container
     depends_on:
       - mysql
     networks:
