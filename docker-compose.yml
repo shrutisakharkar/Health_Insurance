@@ -14,9 +14,10 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -proot"]
       interval: 10s
       retries: 5
+    restart: unless-stopped
     networks:
       - app-network
 
@@ -26,9 +27,15 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8089:8089"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/healthdb
+      SPRING_DATASOURCE_USERNAME: healthuser
+      SPRING_DATASOURCE_PASSWORD: healthpass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
     depends_on:
       mysql:
         condition: service_healthy
+    restart: unless-stopped
     networks:
       - app-network
 
@@ -40,6 +47,7 @@ services:
       - "3000:80"
     depends_on:
       - springboot-service
+    restart: unless-stopped
     networks:
       - app-network
 
